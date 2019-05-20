@@ -1,0 +1,55 @@
+{
+  "name": "@nimahkh/reacthelloworldcomponent",
+  "version": "1.1.24",
+  "description": "IRC hello world component",
+  "main": "index.js",
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/scripts/throw-on-prop-type-error.js"
+    ]
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "start": "webpack-dev-server --mode development",
+    "test": "jest ./test",
+    "build": "yarn autoclean && cross-env NODE_ENV=production babel src -d lib --copy-files"
+  },
+  "author": "IRC (iran react community)",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.8.0",
+    "jest-dom": "^3.2.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
+    "react-testing-library": "^7.0.0",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.4.1"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  }
+}
