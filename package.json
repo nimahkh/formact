@@ -12,7 +12,7 @@
     "lib"
   ],
   "scripts": {
-    "start": "webpack-dev-server --mode development",
+    "start": "webpack-dev-server --hot --inline --mode development",
     "test": "jest ./test",
     "build": "yarn autoclean && cross-env NODE_ENV=production babel src -d lib --copy-files"
   },
@@ -30,13 +30,19 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.3.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-react": "^7.0.2",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-standard": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.8.0",
     "jest-dom": "^3.2.2",
+    "nodemon": "^1.19.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
@@ -46,7 +52,9 @@
     "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
-    "prop-types": "^15.7.2"
+    "jss-preset-default": "^4.5.0",
+    "prop-types": "^15.7.2",
+    "react-jss": "^8.6.1"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
