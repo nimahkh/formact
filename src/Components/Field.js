@@ -5,6 +5,7 @@ import withStyles from 'react-jss'
 const styles = {
     container: {
         position: 'relative',
+        width:'255px',
         margin: {
             top: 5, // jss-plugin-default-unit makes this 5px
             right: 0,
@@ -24,24 +25,36 @@ const styles = {
         color: '#676767'
     },
     input: {
-        border: "none",
         appearance: 'none !important',
-        borderBottom: "1px solid black",
+        border: "1px solid blue",
+        borderRadius:5,
         boxSizing: "border-box",
         fontFamily:
             "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif",
         fontSize: "1rem",
-        padding: "12px 0 8px 0",
+        padding: "12px 0px 8px 5px",
+        marginBottom:10,
+        '&:required':{
+            border:'1px solid #333'
+        },
+        '&:hover':{
+            border:'1px solid #333'
+        }
     },
     inputActive: {
-        transform: 'translateY(-25px)',
-        fontSize: '.9em',
-        color: '#000',
+        transform: 'translate(-10px ,-25px)',
+        fontSize: '.7em',
+        color: '#333',
+        textShadow: '1px 0 0 #fff, -1px 0 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff'
+    },
+    unActiveInput: {
+        transform: 'translate(0px ,0px)',
+        fontSize: '0.8em',
+        color: '#333',
         textShadow: '1px 0 0 #fff, -1px 0 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff'
     },
     spanStyles: {
         boxSizing: "border-box",
-        fontSize: "1rem",
         left: 0,
         padding: "17px 0 13px 0",
         pointerEvents: "none",
@@ -56,7 +69,7 @@ const styles = {
         left: 15,
         top: 16,
         transition: 'all 150ms ease-in',
-        color: '#676767'
+        color: '#676767',
     }
 }
 
@@ -65,10 +78,6 @@ const Field = (props) => {
     const [isFocused, setFocused] = useState()
 
     const Element = props.element;
-
-    function checkInputClass(inputClass) {
-        return inputClass !== undefined
-    }
 
     function handleFocusChange() {
         setFocused(true);
@@ -80,15 +89,15 @@ const Field = (props) => {
         props.handleBlurChange();
     }
 
-    function onChange() {
-        props.onChange();
+    function onChange(e) {
+        props.onChange(e);
     }
 
     return (
         <React.Fragment>
-            <div className={!checkInputClass(inputClass) ? classes.container : inputClass.container}>
+            <div className={inputClass===undefined ? classes.container : inputClass.container}>
 
-                <span className={[isFocused && classes.inputActive, classes.floatingStyles].join(" ")}>
+                <span className={[(isFocused || value!=="") ? classes.inputActive : classes.unActiveInput, classes.floatingStyles].join(" ")}>
                     {label}
                 </span>
                 <Element
@@ -108,10 +117,10 @@ const Field = (props) => {
                     readOnly={props.readOnly}
                     spellCheck={props.spellCheck}
                     step={props.step}
-                    onChange={onChange}
+                    onChange={e=>onChange(e)}
                     name={name}
                     value={value}
-                    className={!checkInputClass(inputClass) ? classes.input : inputClass.input}
+                    className={inputClass===undefined ? classes.input : inputClass.input}
                     type={type}
                     required={required}
                     disabled={disabled}
