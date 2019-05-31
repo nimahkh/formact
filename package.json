@@ -1,7 +1,7 @@
 {
-  "name": "@nimahkh/reacthelloworldcomponent",
+  "name": "@nimahkh/formact",
   "version": "1.1.24",
-  "description": "IRC hello world component",
+  "description": "Formact is form generator for react with powerfull props",
   "main": "index.js",
   "jest": {
     "setupFiles": [
@@ -16,7 +16,7 @@
     "test": "jest ./test",
     "build": "yarn autoclean && cross-env NODE_ENV=production babel src -d lib --copy-files"
   },
-  "author": "IRC (iran react community)",
+  "author": "nima habibkhoda",
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
