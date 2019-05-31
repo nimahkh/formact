@@ -1,6 +1,6 @@
 {
   "name": "@nimahkh/formact",
-  "version": "1.1.25",
+  "version": "0.0.2",
   "description": "Formact is form generator for react with powerfull props",
   "main": "index.js",
   "jest": {
