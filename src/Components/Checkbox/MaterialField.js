@@ -6,7 +6,7 @@ const styles = {
     container: {
         display: 'inline-block',
         position: 'relative',
-        margin: '0 0 10px',
+        margin: '5px 0 0 1rem',
         fontSize: 16,
         '& > input': {
             position: 'absolute',
@@ -19,29 +19,29 @@ const styles = {
         },
         '& label': {
             display: 'block',
-            padding: '0px 0px 0px 24px',
+            padding: '4px 30px 0px 0px',
             cursor: 'pointer',
             '&:before': {
                 content: '""',
                 position: 'absolute',
                 top: 4,
-                left: 0,
+                right: 0,
                 width: 16,
                 height: 16,
                 backgroundColor: 'transparent',
                 border: '2px solid rgba(0, 0, 0, 0.54)',
                 borderRadius: 2,
                 zIndex: 1,
-                transition: 'all 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
                 transitionProperty: 'background-color, border-color',
             },
             "&:after": {
                 content: '""',
                 position: 'absolute',
-                top: 5,
-                left: 5,
-                width: 6,
-                height: 12,
+                top: 8,
+                right: 7,
+                width: 4,
+                height: 8,
                 borderBottom: '2px solid transparent',
                 borderRight: '2px solid transparent',
                 transform: 'rotate(45deg)',
@@ -50,21 +50,19 @@ const styles = {
             }
         }
     },
-    checked:{
-        '& + label':{
-            '&:before': {
-                backgroundColor: '#3f51b5',
-                borderColor: '#3f51b5'
-            },
-            '&:after': {
-                borderColor: '#fff'
-            }
+    checked: {
+        '&:before': {
+            backgroundColor: 'rgba(0,0,255,1) !important',
+            borderColor: 'rgba(0,0,255,1) !important',
+        },
+        '&:after': {
+            borderColor: '#fff !important',
         }
     },
 }
 
 const MaterialField = (props) => {
-    const {classes, checked,  label, inputClass, name, value, required, disabled} = props
+    const {classes, checked, label, inputClass, name, value, required, disabled} = props
 
     const [isChecked, setIsChecked] = useState(false)
 
@@ -73,11 +71,11 @@ const MaterialField = (props) => {
         props.onClick();
     }
 
-    useEffect(()=>{
-        if(checked){
+    useEffect(() => {
+        if (checked) {
             setIsChecked(true)
         }
-    },[])
+    }, [])
 
     function handleFocusChange() {
         props.onFocus();
@@ -90,23 +88,25 @@ const MaterialField = (props) => {
     return (
         <React.Fragment>
             <div className={classes.container}
-                 onClick={e=> onClick(e)}
+                 onClick={e => onClick(e)}
             >
+                <label
+                    className={[inputClass === undefined ? classes.label : inputClass.label, isChecked ? classes.checked : ""].join(" ")}>
+                    {label}
+                </label>
+
                 <input
                     id={props.id}
                     onFocus={(e) => handleFocusChange(e)}
                     onChange={e => onChange(e)}
                     name={name}
                     value={value}
-                    className={isChecked ? classes.checked : ""}
                     type={"checkbox"}
                     required={required}
                     disabled={disabled}
                     defaultChecked={isChecked}
                 />
-                <label className={inputClass === undefined ? classes.label : inputClass.label}>
-                    {label}
-                </label>
+
             </div>
         </React.Fragment>
     )
