@@ -78,12 +78,6 @@ const MaterialField = (props) => {
 
     const [isFocused, setFocused] = useState()
 
-    useEffect(()=>{
-        if(inputClass !==undefined){
-            console.log(inputClass.input);
-        }
-    })
-
     const Element = props.element;
 
     function handleFocusChange() {
@@ -165,8 +159,8 @@ MaterialField.propTypes = {
     styles: PropTypes.object,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     inputClass: PropTypes.shape({
-        container: PropTypes.object,
-        input: PropTypes.object
+        container: PropTypes.string,
+        input: PropTypes.string
     }),
     label: PropTypes.string,
     required: PropTypes.bool,
